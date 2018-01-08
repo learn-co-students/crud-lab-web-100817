@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import Restaurant from "./Restaurant";
 
 class Restaurants extends Component {
   render() {
-    return(
-      <ul>
-        Restaurants Component
-      </ul>
-    );
+    const restaurantNames = this.props.store
+      .getState()
+      .restaurants.map(restaurant => (
+        <Restaurant store={this.props.store} restaurant={restaurant} />
+      ));
+    return <ul>{restaurantNames}</ul>;
   }
-};
+}
 
 export default Restaurants;
